@@ -30,7 +30,7 @@ export class Register extends React.Component {
     }
 
     console.log(newUser);
-    axios.post('http://localhost:5000/users/add', newUser)
+    axios.post('http://localhost:5000/users/registerUser', newUser)
           .then(res => console.log(res.data));
 
     this.setState({

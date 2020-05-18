@@ -21,9 +21,25 @@ export class Login extends React.Component {
   
   handleSubmit(event) {
     event.preventDefault(); //prevent page from loading
-    console.log("submitted");
-  };
+ 
+    console.log("Form submitted");
 
+    const newUser = {
+      username: this.state.username, 
+      password: this.state.password
+    }
+
+    console.log(newUser);
+
+
+    this.setState({
+      username : '', 
+      password : ''
+    });
+
+   //window.location = '/'; //go back to homepage
+
+  };
 
   render() {
     return (
@@ -39,6 +55,7 @@ export class Login extends React.Component {
               <input
                 type="text"
                 name="username"
+                value={this.state.username}
                 placeholder="Enter your username here"
                 onChange={this.handleChange}
               />
@@ -48,6 +65,7 @@ export class Login extends React.Component {
               <input
                 type="password"
                 name="password"
+                value={this.state.password}
                 placeholder="Enter your password here"
                 onChange={this.handleChange}
               />

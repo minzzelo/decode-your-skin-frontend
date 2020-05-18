@@ -9,7 +9,7 @@ export function Nav() {
   };
 
   return (
-    <>
+     <>
       <nav>
         <h3>Decode your skin</h3>
         <ul className="nav-links">

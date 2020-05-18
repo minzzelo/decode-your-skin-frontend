@@ -22,7 +22,22 @@ export class Register extends React.Component {
   
   handleSubmit(event) {
     event.preventDefault(); //prevent page from loading
-    console.log("submitted");
+
+    const newUser = {
+      username: this.state.username, 
+      email: this.state.email, 
+      password: this.state.password
+    }
+
+    console.log(newUser);
+    axios.post('http://localhost:5000/users/add', newUser)
+          .then(res => console.log(res.data));
+
+    this.setState({
+      username : '', 
+      email : '', 
+      password : ''
+    })
   };
 
 
@@ -38,6 +53,7 @@ export class Register extends React.Component {
               <input
                 type="text"
                 name="username"
+                value={this.state.username}
                 placeholder="Enter your username here"
                 onChange={this.handleChange}
               />
@@ -47,6 +63,7 @@ export class Register extends React.Component {
               <input
                 type="email"
                 name="email"
+                value={this.state.email}
                 placeholder="Enter your email here"
                 onChange={this.handleChange}
               />
@@ -56,6 +73,7 @@ export class Register extends React.Component {
               <input
                 type="password"
                 name="password"
+                value={this.state.password}
                 placeholder="Enter your password here"
                 onChange={this.handleChange}
               />

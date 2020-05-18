@@ -10,29 +10,14 @@ export class Register extends React.Component {
       password : ''
     }
 
-    this.handleUsername = this.handleUsername.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     
   }
 
 
-  handleUsername(event) {
-    this.setState({username : event.target.value});
-    console.log("username inputted");
-  }
-
-  handleEmail(event) {
-    this.setState({email : event.target.value});
-    console.log("email inputted");
-  }
-
-
-  handlePassword(event) {
-    this.setState({password : event.target.value});
-    console.log("password inputed");
-
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
   }
   
   handleSubmit(event) {
@@ -54,7 +39,7 @@ export class Register extends React.Component {
                 type="text"
                 name="username"
                 placeholder="Enter your username here"
-                onChange={this.handleUsername}
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
@@ -63,7 +48,7 @@ export class Register extends React.Component {
                 type="email"
                 name="email"
                 placeholder="Enter your email here"
-                onChange={this.handleEmail}
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
@@ -72,7 +57,7 @@ export class Register extends React.Component {
                 type="password"
                 name="password"
                 placeholder="Enter your password here"
-                onChange={this.handlePassword}
+                onChange={this.handleChange}
               />
             </div>
             <div className="footer">

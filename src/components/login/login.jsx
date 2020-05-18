@@ -11,22 +11,14 @@ export class Login extends React.Component {
     };
 
     //binding
-    this.handleUsername = this.handleUsername.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleUsername(event) {
-    this.setState({username : event.target.value});
-    console.log("username inputted");
+  handleChange(event) {
+    this.setState({[event.target.name]: event.target.value});
   }
   
-  handlePassword(event) {
-    this.setState({password : event.target.value});
-    console.log("password inputed");
-
-  }
-
   handleSubmit(event) {
     event.preventDefault(); //prevent page from loading
     console.log("submitted");
@@ -48,7 +40,7 @@ export class Login extends React.Component {
                 type="text"
                 name="username"
                 placeholder="Enter your username here"
-                onChange={this.handleUsername}
+                onChange={this.handleChange}
               />
             </div>
             <div className="form-group">
@@ -57,7 +49,7 @@ export class Login extends React.Component {
                 type="password"
                 name="password"
                 placeholder="Enter your password here"
-                onChange={this.handlePassword}
+                onChange={this.handleChange}
               />
             </div>
             <div className="footer">

@@ -3,9 +3,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: #f5f0ed;
-  color: rgb(49, 49, 49);
-  margin-bottom: 10vh;
+  background: #f2d3c0a4;
 }
 
 .nav-links {
@@ -14,4 +12,10 @@ nav {
   justify-content: space-around;
   align-items: center;
   list-style: none;
+}
+
+img {
+  position: absolute;
+  width: 150px;
+  margin-left: 20px;
 }

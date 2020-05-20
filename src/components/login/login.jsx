@@ -59,6 +59,7 @@ export class Login extends React.Component {
                 value={this.state.username}
                 placeholder="Enter your username here"
                 onChange={this.handleChange}
+                required
               />
             </div>
             <div className="form-group">
@@ -69,6 +70,7 @@ export class Login extends React.Component {
                 value={this.state.password}
                 placeholder="Enter your password here"
                 onChange={this.handleChange}
+                required
               />
             </div>
             <div className="footer">

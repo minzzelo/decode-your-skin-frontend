@@ -7,7 +7,7 @@ export class Register extends React.Component {
     this.state = {
       username : '', 
       email : '', 
-      password : ''
+      password : '',
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,7 +36,7 @@ export class Register extends React.Component {
     this.setState({
       username : '', 
       email : '', 
-      password : ''
+      password : '', 
     })
   };
 
@@ -56,6 +56,7 @@ export class Register extends React.Component {
                 value={this.state.username}
                 placeholder="Enter your username here"
                 onChange={this.handleChange}
+                required
               />
             </div>
             <div className="form-group">
@@ -66,6 +67,7 @@ export class Register extends React.Component {
                 value={this.state.email}
                 placeholder="Enter your email here"
                 onChange={this.handleChange}
+                required
               />
             </div>
             <div className="form-group">
@@ -76,9 +78,11 @@ export class Register extends React.Component {
                 value={this.state.password}
                 placeholder="Enter your password here"
                 onChange={this.handleChange}
+                required
               />
             </div>
             <div className="footer">
+              <div className="result">{this.state.error}</div>
               <button type="submit" className="btn">
                 Register
              </button>

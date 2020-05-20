@@ -1,13 +1,12 @@
 import React from "react";
-import loginImg from "./login.svg";
-import axios from 'axios';
+import axios from "axios";
 
 export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username :'', 
-      password: ''
+      username: "",
+      password: "",
     };
 
     //binding
@@ -16,40 +15,37 @@ export class Login extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({ [event.target.name]: event.target.value });
   }
-  
+
   handleSubmit(event) {
     event.preventDefault(); //prevent page from loading
- 
+
     console.log("Form submitted");
 
     const newUser = {
-      username: this.state.username, 
-      password: this.state.password
-    }
+      username: this.state.username,
+      password: this.state.password,
+    };
 
     console.log(newUser);
-    axios.post('http://localhost:5000/users/login', newUser)
-    .then(res => console.log(res.data));
+    axios
+      .post("http://localhost:5000/users/login", newUser)
+      .then((res) => console.log(res.data));
 
     this.setState({
-      username : '', 
-      password : ''
+      username: "",
+      password: "",
     });
 
-   //window.location = '/'; //go back to homepage
-
-  };
+    //window.location = '/'; //go back to homepage
+  }
 
   render() {
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
         <div className="content">
-          {/* <div className="image">
-            <img src={loginImg} alt="" />
-          </div> */}
           <form className="form" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username</label>
@@ -74,7 +70,9 @@ export class Login extends React.Component {
               />
             </div>
             <div className="footer">
-              <button type="submit" className="btn">Login</button>
+              <button type="submit" className="btn">
+                Login
+              </button>
             </div>
           </form>
         </div>

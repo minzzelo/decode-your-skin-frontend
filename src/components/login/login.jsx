@@ -31,7 +31,11 @@ export class Login extends React.Component {
     console.log(newUser);
     axios
       .post("http://localhost:5000/users/login", newUser)
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        console.log(res.data)
+        alert(res.data);
+       })
+      .catch(err => console.log(err));
 
     this.setState({
       username: "",

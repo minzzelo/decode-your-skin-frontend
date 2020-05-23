@@ -30,8 +30,13 @@ export class Register extends React.Component {
     }
 
     console.log(newUser);
+
     axios.post('http://localhost:5000/users/registerUser', newUser)
-          .then(res => console.log(res.data));
+          .then(res => {
+            console.log(res.data);
+            alert(res.data);
+          })
+          .catch(err => console.log(err));
 
     this.setState({
       username : '', 
@@ -42,6 +47,8 @@ export class Register extends React.Component {
 
 
   render() {
+    const { registerOutcome } = this.state;
+
     return (
       <div className="base-container">
         <div className="header">Register</div>
@@ -79,13 +86,13 @@ export class Register extends React.Component {
                 placeholder="Enter your password here"
                 onChange={this.handleChange}
                 required
+                required minLength="8"
               />
             </div>
             <div className="footer">
-              <div className="result">{this.state.error}</div>
               <button type="submit" className="btn">
-                Register
-             </button>
+                  Register
+              </button>
             </div>
           </form>
         </div>

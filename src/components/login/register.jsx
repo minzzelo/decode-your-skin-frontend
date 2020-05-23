@@ -8,6 +8,7 @@ export class Register extends React.Component {
       username : '', 
       email : '', 
       password : '',
+      error: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,18 +37,19 @@ export class Register extends React.Component {
             console.log(res.data);
             alert(res.data);
           })
-          .catch(err => console.log(err));
+          .catch(err => this.setState({error: err.response.data}));
 
     this.setState({
       username : '', 
       email : '', 
       password : '', 
+      error : ''
     })
   };
 
 
   render() {
-    const { registerOutcome } = this.state;
+    const { error } = this.state;
 
     return (
       <div className="base-container">
@@ -93,6 +95,7 @@ export class Register extends React.Component {
               <button type="submit" className="btn">
                   Register
               </button>
+              <div>{error}</div>
             </div>
           </form>
         </div>

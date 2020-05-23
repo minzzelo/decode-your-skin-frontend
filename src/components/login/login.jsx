@@ -7,6 +7,7 @@ export class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
+      error: "",
     };
 
     //binding
@@ -35,7 +36,7 @@ export class Login extends React.Component {
         console.log(res.data)
         alert(res.data);
        })
-      .catch(err => console.log(err));
+       .catch(err => this.setState({error: err.response.data}));
 
     this.setState({
       username: "",
@@ -46,6 +47,8 @@ export class Login extends React.Component {
   }
 
   render() {
+    const { error } = this.state;
+
     return (
       <div className="base-container" ref={this.props.containerRef}>
         <div className="header">Login</div>
@@ -77,6 +80,7 @@ export class Login extends React.Component {
               <button type="submit" className="btn">
                 Login
               </button>
+              <div>{error}</div>
             </div>
           </form>
         </div>

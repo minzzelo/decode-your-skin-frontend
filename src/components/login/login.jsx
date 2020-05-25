@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import Alert from "@material-ui/lab/Alert";
+
 export class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -83,9 +85,13 @@ export class Login extends React.Component {
               <button type="submit" className="btn">
                 Login
               </button>
-              <div>{error}</div>
             </div>
           </form>
+          {error && (
+            <Alert variant="outlined" severity="error">
+              Error logging in!
+            </Alert>
+          )}
         </div>
       </div>
     );

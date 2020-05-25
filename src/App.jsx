@@ -28,10 +28,10 @@ class App extends React.Component {
       loginStatus: false,
       user: "",
     });
-    console.log(this.state);
   }
 
   render() {
+    console.log(this.state.user);
     return (
       <>
         <Router>

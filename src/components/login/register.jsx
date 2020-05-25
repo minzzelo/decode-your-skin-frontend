@@ -85,7 +85,6 @@ export class Register extends React.Component {
                 placeholder="Enter your password here"
                 onChange={this.handleChange}
                 required
-                required
                 minLength="8"
               />
             </div>

@@ -34,8 +34,8 @@ export class LoginPage extends React.Component {
     }));
   }
 
-  handleSuccessfulAuth(data) {
-    this.props.handleLogin(data);
+  handleSuccessfulAuth() {
+    this.props.handleLogin();
     this.props.history.push("/");
   }
 

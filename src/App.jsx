@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginStatus: false,
+      loginStatus: localStorage.getItem("TOKEN_KEY") != null,
       user: "",
     };
 
@@ -16,10 +16,30 @@ class App extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  handleLogin(data) {
+  //decrypt token
+  parseJwt() {
+    let token = localStorage.getItem("TOKEN_KEY");
+    if (!token) {
+      return "";
+    }
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    // console.log(`jsonpayload ${jsonPayload}`);
+    return JSON.parse(jsonPayload);
+  }
+
+  handleLogin() {
     this.setState({
       loginStatus: true,
-      user: data.username,
+      user: this.parseJwt().name,
     });
   }
 
@@ -28,10 +48,16 @@ class App extends React.Component {
       loginStatus: false,
       user: "",
     });
+    localStorage.removeItem("TOKEN_KEY");
+  }
+
+  componentDidMount() {
+    this.setState({
+      user: this.parseJwt().name,
+    });
   }
 
   render() {
-    console.log(this.state.user);
     return (
       <>
         <Router>

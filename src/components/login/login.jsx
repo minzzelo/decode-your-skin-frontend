@@ -34,7 +34,7 @@ export class Login extends React.Component {
       .post("http://localhost:5000/users/login", newUser)
       .then((res) => {
         console.log(res.data)
-        alert(res.data);
+        alert("You have successfully logged in!");
        })
        .catch(err => this.setState({error: err.response.data}));
 

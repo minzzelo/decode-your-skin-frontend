@@ -1,52 +1,50 @@
 import React from "react";
-import axios from 'axios';
+import axios from "axios";
 
 export class Register extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username : '', 
-      email : '', 
-      password : '',
-      error: ''
-    }
+      username: "",
+      email: "",
+      password: "",
+      error: "",
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    
   }
-
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({ [event.target.name]: event.target.value });
   }
-  
+
   handleSubmit(event) {
     event.preventDefault(); //prevent page from loading
 
     const newUser = {
-      username: this.state.username, 
-      email: this.state.email, 
-      password: this.state.password
-    }
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
+    };
 
     console.log(newUser);
 
-    axios.post('http://localhost:5000/users/registerUser', newUser)
-          .then(res => {
-            console.log(res.data);
-            alert(res.data);
-          })
-          .catch(err => this.setState({error: err.response.data}));
+    axios
+      .post("http://localhost:5000/users/registerUser", newUser)
+      .then((res) => {
+        console.log(res.data);
+        alert(res.data);
+      })
+      .catch((err) => this.setState({ error: err.response.data }));
 
     this.setState({
-      username : '', 
-      email : '', 
-      password : '', 
-      error : ''
-    })
-  };
-
+      username: "",
+      email: "",
+      password: "",
+      error: "",
+    });
+  }
 
   render() {
     const { error } = this.state;
@@ -55,7 +53,6 @@ export class Register extends React.Component {
       <div className="base-container">
         <div className="header">Register</div>
         <div className="content">
-          <div className="image">{/* for image */}</div>
           <form className="form" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username</label>
@@ -88,12 +85,13 @@ export class Register extends React.Component {
                 placeholder="Enter your password here"
                 onChange={this.handleChange}
                 required
-                required minLength="8"
+                required
+                minLength="8"
               />
             </div>
             <div className="footer">
               <button type="submit" className="btn">
-                  Register
+                Register
               </button>
               <div>{error}</div>
             </div>

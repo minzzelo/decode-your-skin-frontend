@@ -33,10 +33,13 @@ export class Login extends React.Component {
     axios
       .post("http://localhost:5000/users/login", newUser)
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         alert("You have successfully logged in!");
-       })
-       .catch(err => this.setState({error: err.response.data}));
+
+        //redirect to homepage after successful login
+        this.props.handleSuccessfulAuth(newUser);
+      })
+      .catch((err) => this.setState({ error: err.response.data }));
 
     this.setState({
       username: "",

@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.scss";
 import logo from "./logo.png";
 
-import { emphasize, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Chip from "@material-ui/core/Chip";
 import HomeIcon from "@material-ui/icons/Home";
@@ -22,36 +22,51 @@ const StyledBreadcrumb = withStyles((theme) => ({
   },
 }))(Chip);
 
-export function Nav() {
-  return (
-    <div style={{ marginBottom: 50 }}>
-      <img src={logo} />
-      <Breadcrumbs aria-label="breadcrumb">
-        <StyledBreadcrumb
-          component="a"
-          href="/"
-          label="Home"
-          icon={<HomeIcon fontSize="small" />}
-        />
-        <StyledBreadcrumb
-          component="a"
-          href="/"
-          label="Products"
-          icon={<FavoriteRoundedIcon fontSize="small" />}
-        />
-        <StyledBreadcrumb
-          component="a"
-          href="/"
-          label="My Skincare Diary"
-          icon={<BookIcon fontSize="small" />}
-        />
-        <StyledBreadcrumb
-          component="a"
-          href="/login"
-          label="Login / Register"
-          icon={<PersonRoundedIcon fontSize="small" />}
-        />
-      </Breadcrumbs>
-    </div>
-  );
+export class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div style={{ marginBottom: 50 }}>
+        <img src={logo} />
+        <Breadcrumbs aria-label="breadcrumb">
+          <StyledBreadcrumb
+            component="a"
+            href="/"
+            label="Home"
+            icon={<HomeIcon fontSize="small" />}
+          />
+          <StyledBreadcrumb
+            component="a"
+            href="/"
+            label="Products"
+            icon={<FavoriteRoundedIcon fontSize="small" />}
+          />
+          <StyledBreadcrumb
+            component="a"
+            href="/"
+            label="My Skincare Diary"
+            icon={<BookIcon fontSize="small" />}
+          />
+          {!this.props.loginStatus && (
+            <StyledBreadcrumb
+              component="a"
+              href="/login"
+              label="Login / Register"
+              icon={<PersonRoundedIcon fontSize="small" />}
+            />
+          )}
+          {this.props.loginStatus && (
+            <StyledBreadcrumb
+              component="a"
+              label="Log out"
+              icon={<PersonRoundedIcon fontSize="small" />}
+              onClick={this.props.handleLogout}
+            />
+          )}
+        </Breadcrumbs>
+      </div>
+    );
+  }
 }

@@ -11,6 +11,7 @@ export class LoginPage extends React.Component {
     this.state = {
       isLoginActive: true,
     };
+    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +34,11 @@ export class LoginPage extends React.Component {
     }));
   }
 
+  handleSuccessfulAuth(data) {
+    this.props.handleLogin(data);
+    this.props.history.push("/");
+  }
+
   render() {
     const { isLoginActive } = this.state;
     const current = isLoginActive ? "Register" : "Login";
@@ -42,7 +48,10 @@ export class LoginPage extends React.Component {
         <div className="login">
           <div className="container" ref={(ref) => (this.container = ref)}>
             {isLoginActive && (
-              <Login containerRef={(ref) => (this.current = ref)} />
+              <Login
+                containerRef={(ref) => (this.current = ref)}
+                handleSuccessfulAuth={this.handleSuccessfulAuth}
+              />
             )}
             {!isLoginActive && (
               <Register containerRef={(ref) => (this.current = ref)} />

@@ -89,7 +89,7 @@ export class Login extends React.Component {
           </form>
           {error && (
             <Alert variant="outlined" severity="error">
-              Error logging in!
+              {error}
             </Alert>
           )}
         </div>

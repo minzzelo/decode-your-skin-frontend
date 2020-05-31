@@ -1,9 +1,16 @@
+:root {
+  --primary: #f47b8f;
+  --background: #ffffff;
+  --secondary: #f3aabb;
+  --tertiary: #f5cdd3;
+}
+
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: #f2d3c0a4;
+  background: var(--tertiary);
 }
 
 .nav-links {

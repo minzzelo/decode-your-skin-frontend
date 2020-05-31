@@ -1,8 +1,11 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import "./App.scss";
+
 import { LoginPage } from "./components/login/";
 import { Nav } from "./components/nav";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Products } from "./components/products";
 
 class App extends React.Component {
   constructor(props) {
@@ -87,6 +90,10 @@ class App extends React.Component {
                   loginStatus={this.loginStatus}
                 />
               )}
+            />
+            <Route
+              path="/products"
+              render={(props) => <Products {...props} />}
             />
           </Switch>
         </Router>

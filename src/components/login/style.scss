@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root {
+  --primary: #f47b8f;
+  --background: #ffffff;
+  --secondary: #f72e9c;
+  --tertiary: #f72e9c;
+}
+
 //Login Main Container
 .login {
   width: 27em;
@@ -8,13 +17,14 @@
   margin-top: 5px;
   position: relative;
   z-index: 99;
+  font-family: "Roboto", sans-serif;
+
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
-    border-radius: 4px;
+    border: 3px solid var(--primary);
     position: relative;
     z-index: 99;
     width: 100%;
@@ -28,21 +38,21 @@
     flex-direction: column;
     justify-content: center;
     height: 90%;
-    background-color: #e09591;
+    border: 3px solid var(--secondary);
     width: 100%;
     position: absolute;
     right: -34%;
-    border-radius: 6px;
     z-index: 1;
     transition: all 400ms ease-in-out;
     cursor: pointer;
-    box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.281);
 
     &.right {
       right: -40%;
       align-items: flex-end;
       &:hover {
         right: -45%;
+        border: 3px solid var(--tertiary);
+        color: var(--tertiary);
       }
     }
     &.left {
@@ -50,31 +60,40 @@
       align-items: flex-start;
       &:hover {
         right: 45%;
+        border: 3px solid var(--tertiary);
+        color: var(--tertiary);
       }
     }
 
     .text {
       font-size: 21px;
-      font-weight: 500;
-      color: #fff;
+      font-weight: 700;
+      color: var(--primary);
       margin-right: 3em;
       margin-left: 3em;
+      text-transform: uppercase;
     }
   }
 }
 
 //Button
 .btn {
-  font-size: 21px;
+  font-size: 20px;
+  color: var(--primary);
+  text-transform: uppercase;
+  font-weight: 700;
+
   padding: 5px 20px;
+
   border: 0;
-  background-color: #e09591;
-  color: #fff;
-  border-radius: 3px;
-  transition: all 250ms ease-in-out;
+  border: 3px solid var(--primary);
+  background: #fff;
+
   cursor: pointer;
+
   &:hover {
-    background-color: #c78480;
+    border: 3px solid var(--secondary);
+    color: var(--secondary);
   }
   &:focus {
     outline: none;
@@ -89,20 +108,14 @@
 
   .header {
     font-size: 24px;
-    font-family: "Open-Sans", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary);
   }
 
   .content {
     display: flex;
     flex-direction: column;
-
-    .image {
-      width: 21em;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
 
     .form {
       margin-top: 2em;
@@ -118,7 +131,10 @@
       width: fit-content;
 
       label {
-        font-size: 20px;
+        font-size: 16px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--primary);
       }
 
       input:invalid {
@@ -135,10 +151,7 @@
         height: 37px;
         padding: 0px 10px;
         font-size: 16px;
-        font-family: "Open Sans", sans-serif;
-        background-color: #f3f3f3;
         border: 0;
-        border-radius: 4px;
         margin-bottom: 31px;
         transition: all 150ms ease-in;
 

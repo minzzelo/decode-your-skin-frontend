@@ -6,6 +6,7 @@ import "./App.scss";
 import { LoginPage } from "./components/login/";
 import { Nav } from "./components/nav";
 import { Products } from "./components/products";
+import { Search } from "./components/search";
 
 class App extends React.Component {
   constructor(props) {
@@ -109,9 +110,12 @@ export class Home extends React.Component {
   render() {
     return (
       <>
-        <h1>Home page</h1>
-        {this.props.loginStatus && <h1>Welcome {this.props.user}</h1>}
-        {!this.props.loginStatus && <h1>Welcome guest</h1>}
+        <div className="container">
+          <h1>Home page</h1>
+          {this.props.loginStatus && <h1>Welcome {this.props.user}</h1>}
+          {!this.props.loginStatus && <h1>Welcome guest</h1>}
+        </div>
+        <Search />
       </>
     );
   }

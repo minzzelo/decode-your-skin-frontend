@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import Alert from "@material-ui/lab/Alert";
+
 export class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ export class Register extends React.Component {
       password: this.state.password,
     };
 
-    console.log(newUser);
+    //console.log(newUser);
 
     axios
       .post("http://localhost:5000/users/registerUser", newUser)
@@ -36,7 +38,7 @@ export class Register extends React.Component {
         console.log(res.data);
         alert(res.data);
       })
-      .catch((err) => this.setState({ error: err.response.data }));
+      .catch((err) => this.setState({ error: err.response.data}));
 
     this.setState({
       username: "",
@@ -92,9 +94,13 @@ export class Register extends React.Component {
               <button type="submit" className="btn">
                 Register
               </button>
-              <div>{error}</div>
             </div>
           </form>
+          {error && (
+            <Alert variant="outlined" severity="error">
+              {error}
+            </Alert>
+          )}
         </div>
       </div>
     );

@@ -45,7 +45,7 @@ export class Nav extends React.Component {
           />
           <StyledBreadcrumb
             component="a"
-            href="/"
+            href="/diary"
             label="My Skincare Diary"
             icon={<BookIcon fontSize="small" />}
           />

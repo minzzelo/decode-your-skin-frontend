@@ -7,6 +7,7 @@ import { LoginPage } from "./components/login/";
 import { Nav } from "./components/nav";
 import { Products } from "./components/products";
 import { Search } from "./components/search";
+import { Diary } from "./components/diary";
 
 class App extends React.Component {
   constructor(props) {
@@ -95,6 +96,10 @@ class App extends React.Component {
             <Route
               path="/products"
               render={(props) => <Products {...props} />}
+            />
+            <Route
+              path="/diary"
+              render={(props) => <Diary {...props} user={this.state.user} />}
             />
           </Switch>
         </Router>

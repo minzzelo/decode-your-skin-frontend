@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap");
+
+$primary: #f47b8f;
+$background: #ffffff;
+$secondary: #f72e9c;
+$font-size: 14pt;
+$form-shadow: #ffa580;
+$form-primary-highlight: #95a4ff;
+$form-secondary-highlight: #ffc8ff;
+
+.create-post {
+  font-family: "Prompt", sans-serif;
+  margin: auto;
+  padding: 20px;
+  width: 800px;
+
+  background: #e2edf7;
+  border: 3px solid black;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  label {
+    font-weight: 700;
+    font-size: 24px;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input {
+    display: inline-block;
+    width: 500px;
+    font-size: $font-size;
+    line-height: $font-size * 2;
+    border: none;
+    border-bottom: 5px solid rgba(0, 0, 0, 1);
+    padding: 5px 10px;
+    outline: none;
+    margin-bottom: 20px;
+  }
+
+  input:focus {
+    border-bottom: 5px solid $form-primary-highlight;
+  }
+
+  textarea {
+    display: inline-block;
+    width: 500px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    font-family: "Roboto", sans-serif;
+    font-size: $font-size;
+
+    outline: none;
+    border: none;
+    border-bottom: 5px solid rgba(0, 0, 0, 1);
+    resize: none;
+  }
+
+  textarea:focus {
+    border-bottom: 5px solid $form-primary-highlight;
+  }
+
+  button {
+    display: inline-block;
+    padding: 5px 10px;
+
+    background: #ffaebc;
+    font-family: "Prompt", sans-serif;
+    font-size: 20px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 1);
+    box-shadow: 3px 3px 1px $form-primary-highlight,
+      3px 3px 1px 1px rgba(0, 0, 0, 1);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

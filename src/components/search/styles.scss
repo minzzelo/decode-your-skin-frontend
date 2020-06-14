@@ -60,3 +60,24 @@ $form-secondary-highlight: #ffc8ff;
     }
   }
 }
+
+.searchResult {
+
+  h1 {
+    text-align: center;  
+  }
+
+  .ingredients {
+    justify-content: center;
+    width: 500px;
+    display: inline-block;
+    margin-left: 450px;
+    padding-top: 20px;
+
+    #ingredientsList {
+      padding: 40px 20px 20px 40px;
+      border: 1px solid lightpink;
+    }
+  }
+
+}

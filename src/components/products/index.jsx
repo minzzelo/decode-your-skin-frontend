@@ -23,13 +23,15 @@ export class Products extends React.Component {
       url:
         "https://www.ewg.org/skindeep/products/879905-Maybelline_Lash_Sensational_Mascara_254_Very_Black/",
     };
+
     await axios
       .post("http://localhost:5000/products/products", url)
       .then((res) => {
-        this.setState({ name: res.data.name, url: res.data.src });
+        this.setState({ name: res.data.name, url: res.data.src});
       })
       .catch((err) => console.log(err.response.data));
   }
+  
   render() {
     return (
       <>

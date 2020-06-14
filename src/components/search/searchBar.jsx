@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.scss";
 import axios from "axios";
+import Alert from "@material-ui/lab/Alert";
 
 import { SearchResult } from "./searchResult"
 
@@ -11,7 +12,8 @@ export class SearchBar extends React.Component {
       product:  "", 
       ingredients: "", 
       ingredDetails: [], 
-      found: false
+      found: false, 
+      error: "",
     }
 
 
@@ -42,18 +44,21 @@ export class SearchBar extends React.Component {
             console.log(this.state.product);
 
           })
-         .catch((err) => console.log(err.response.data))
+         .catch((err) => this.setState({ error: err.response.data }))
 
       this.setState({
       productName: "",
       ingredients: "",
       ingredDetails: [], 
-      found: false
+      found: false, 
+      error:""
     });
   }
   
   
   render() {
+    const { error } = this.state;
+
     return (
       <div>
         {!this.state.found ?
@@ -64,7 +69,7 @@ export class SearchBar extends React.Component {
                     onChange={this.handleChange}
                     required/>
             <button type="submit">Search</button>
-          </form>
+          </form>     
         :
           <SearchResult 
             ingredients={this.state.ingredients} 
@@ -72,6 +77,12 @@ export class SearchBar extends React.Component {
             ingredDetails={this.state.ingredDetails}
           />
         }
+
+        {error && (
+          <Alert className="error" variant="outlined" severity="error">
+            {error}
+          </Alert>
+        )}
       </div>
 
 

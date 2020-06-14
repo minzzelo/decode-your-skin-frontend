@@ -63,20 +63,46 @@ $form-secondary-highlight: #ffc8ff;
 
 .searchResult {
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   h1 {
     text-align: center;  
   }
 
+  .heading {
+    margin-left: 10em;
+  }
+
   .ingredients {
     justify-content: center;
-    width: 500px;
-    display: inline-block;
-    margin-left: 450px;
     padding-top: 20px;
+    width: 80%;
+    display: inline-block;
+
+    table {
+      margin-top: 2em;
+      margin-left: 10em;
+      width: 100%;
+      border: 1px solid lavender;
+      padding: 20px;
+
+      td {
+        padding-top: 20px;
+      }
+  
+    }
 
     #ingredientsList {
       padding: 40px 20px 20px 40px;
       border: 1px solid lightpink;
+      margin-top: 2em;
+      margin-left: 10em;
+    }
+
+    #ingredientsDetails {
+      padding : 20px;
     }
   }
 

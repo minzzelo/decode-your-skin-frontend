@@ -2,6 +2,8 @@ import React from "react";
 import "./styles.scss";
 import axios from "axios";
 
+import { SearchResult } from "./searchResult"
+
 export class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -31,9 +33,9 @@ export class SearchBar extends React.Component {
          .then((res) => { 
             
             this.setState({ingredients: res.data.ingredients});
-            this.setState({ingredDetails: res.data.tableData})
-            console.log(this.state.ingredients);
-            console.log(this.state.ingredDetails.map(ingred => (ingred)));
+            this.setState({ingredDetails: res.data.tableData.map(ingred => ingred)})
+            
+            console.log(this.state.ingredDetails[0]);
 
           })
          .catch((err) => console.log(err.response.data))
@@ -51,24 +53,11 @@ export class SearchBar extends React.Component {
                   required/>
           <button type="submit">Search</button>
         </form>
-        <div className="searchResult">
-          <h1>{this.state.productName}</h1>
-          <div className="ingredients">
-            <h3>ingredients list</h3>
-            <div id="ingredientsList">{this.state.ingredients}</div>
-          </div>
-          <div className="ingredients">
-            <table id="#ingredientsDetails">
-              <tr>
-                <th>ingredient</th>
-                <th>what-it-does</th>
-                <th>irritancy && comedogenicity</th>
-                <th>INCIDecoder-rating</th>
-              </tr>
-                
-            </table>
-          </div>
-        </div>
+        <SearchResult 
+          ingredients={this.state.ingredients} 
+          productName={this.state.productName}
+          ingredDetails={this.state.ingredDetails}
+        />
       </div>
 
 

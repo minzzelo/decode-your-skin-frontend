@@ -10,7 +10,7 @@ export class SearchBar extends React.Component {
     this.state = {
       productName:  "", 
       ingredients: "", 
-      ingredDetails:[]
+      ingredDetails: []
     }
 
 
@@ -39,6 +39,12 @@ export class SearchBar extends React.Component {
 
           })
          .catch((err) => console.log(err.response.data))
+
+      this.setState({
+      productName: "",
+      ingredients: "",
+      ingredDetails: []
+    });
   }
   
   

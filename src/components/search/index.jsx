@@ -12,7 +12,7 @@ export class Search extends React.Component {
   render() {
     return (
       <>
-        <SearchBar />;
+        <SearchBar />
       </>
     )
   }

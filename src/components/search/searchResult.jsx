@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.scss";
-import axios from "axios";
+
 
 export class SearchResult extends React.Component {
   constructor(props) {
@@ -18,19 +18,23 @@ export class SearchResult extends React.Component {
           </div>
           <div className="ingredients">
             <table id="#ingredientsDetails">
-              <tr>
-                <th>ingredient</th>
-                <th className="func">what-it-does</th>
-                <th>irritancy, comedogenicity</th>
-                <th>INCIDecoder-rating</th>
-              </tr>
-              {this.props.ingredDetails.map(row => (
-                <tr className="details">
-                  {row.map(detail => (
-                    <td>{detail}</td>
-                  ))}
+              <thead>
+                <tr>
+                  <th>ingredient</th>
+                  <th className="func">what-it-does</th>
+                  <th>irritancy, comedogenicity</th>
+                  <th>INCIDecoder-rating</th>
                 </tr>
-              ))} 
+              </thead>
+              <tbody>
+                {this.props.ingredDetails.map(row => (
+                  <tr className="details" key={row}>
+                    {row.map((detail, index) => (
+                      <td key={index}>{detail}</td>
+                    ))}
+                  </tr>
+                ))} 
+              </tbody>
             </table>
           </div>
         </div>

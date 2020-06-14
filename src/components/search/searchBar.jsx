@@ -8,9 +8,10 @@ export class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productName:  "", 
+      product:  "", 
       ingredients: "", 
-      ingredDetails: []
+      ingredDetails: [], 
+      found: false
     }
 
 
@@ -20,22 +21,25 @@ export class SearchBar extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({productName: event.target.value});
+    this.setState({product: event.target.value});
+    console.log(this.state.product);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.product);
+    
     console.log("Search Submitted");
     
-    const product = {productName: this.state.productName};
+    const product = {name: this.state.product};
+
     axios.post("http://localhost:5000/search", product)
          .then((res) => { 
             
             this.setState({ingredients: res.data.ingredients});
-            this.setState({ingredDetails: res.data.tableData.map(ingred => ingred)})
-            
-            console.log(this.state.ingredDetails[0]);
+            this.setState({ingredDetails: res.data.tableData})
+            this.setState({found: true});
+
+            console.log(this.state.product);
 
           })
          .catch((err) => console.log(err.response.data))
@@ -43,7 +47,8 @@ export class SearchBar extends React.Component {
       this.setState({
       productName: "",
       ingredients: "",
-      ingredDetails: []
+      ingredDetails: [], 
+      found: false
     });
   }
   
@@ -51,19 +56,22 @@ export class SearchBar extends React.Component {
   render() {
     return (
       <div>
-        <form className="searchBar" onSubmit={this.handleSubmit}>
-          <input type="text"  
-                  placeholder="Search for a product" 
-                  value={this.state.product} 
-                  onChange={this.handleChange}
-                  required/>
-          <button type="submit">Search</button>
-        </form>
-        <SearchResult 
-          ingredients={this.state.ingredients} 
-          productName={this.state.productName}
-          ingredDetails={this.state.ingredDetails}
-        />
+        {!this.state.found ?
+          <form className="searchBar" onSubmit={this.handleSubmit}>
+            <input type="text"  
+                    placeholder="Search for a product" 
+                    value={this.state.product} 
+                    onChange={this.handleChange}
+                    required/>
+            <button type="submit">Search</button>
+          </form>
+        :
+          <SearchResult 
+            ingredients={this.state.ingredients} 
+            productName={this.state.product}
+            ingredDetails={this.state.ingredDetails}
+          />
+        }
       </div>
 
 

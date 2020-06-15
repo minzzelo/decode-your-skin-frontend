@@ -12,6 +12,8 @@ export class SearchBar extends React.Component {
       product:  "", 
       ingredients: "", 
       ingredDetails: [], 
+      score: "", 
+      image: "", 
       found: false, 
       error: "",
     }
@@ -40,6 +42,9 @@ export class SearchBar extends React.Component {
             this.setState({ingredients: res.data.ingredients});
             this.setState({ingredDetails: res.data.tableData})
             this.setState({found: true});
+            this.setState({score: res.data.score})
+            this.setState({image: res.data.image})
+            console.log(res.data.image)
 
             console.log(this.state.product);
 
@@ -51,7 +56,9 @@ export class SearchBar extends React.Component {
       ingredients: "",
       ingredDetails: [], 
       found: false, 
-      error:""
+      error: "", 
+      score: "", 
+      image: "", 
     });
   }
   
@@ -75,6 +82,8 @@ export class SearchBar extends React.Component {
             ingredients={this.state.ingredients} 
             productName={this.state.product}
             ingredDetails={this.state.ingredDetails}
+            image={this.state.image}
+            score={this.state.score}
           />
         }
 

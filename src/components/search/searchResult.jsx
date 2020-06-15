@@ -11,7 +11,21 @@ export class SearchResult extends React.Component {
     return (
       <div>
         <div className="searchResult">
+          <div>
+            <button>Back</button>
+            <button>Favourite</button>
+          </div>
+  
+          <div className="image">
+              <img src={this.props.image} />
+          </div>
+
           <h1>{this.props.productName}</h1>
+         
+          <div className="image">
+              <img src={this.props.score} />
+          </div>
+         
           <div className="ingredients">
             <h3 className="heading">ingredients list</h3>
             <div id="ingredientsList">{this.props.ingredients}</div>

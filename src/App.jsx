@@ -120,7 +120,7 @@ export class Home extends React.Component {
           {this.props.loginStatus && <h1>Welcome {this.props.user}</h1>}
           {!this.props.loginStatus && <h1>Welcome guest</h1>}
         </div>
-      
+
         <Search />
       </>
     );

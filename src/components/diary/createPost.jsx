@@ -8,6 +8,7 @@ export class CreatePost extends React.Component {
     super(props);
     this.state = {
       user: this.props.user,
+      date: "",
       title: "",
       description: "",
       skin_condition: "",
@@ -20,6 +21,10 @@ export class CreatePost extends React.Component {
     this.getPost = this.getPost.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ ...nextProps });
+  }
+
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
@@ -27,14 +32,12 @@ export class CreatePost extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    console.log("Form submitted");
-
     const newPost = {
       user: this.state.user,
+      date: new Date(),
       title: this.state.title,
+      description: this.state.description,
     };
-
-    console.log(newPost);
 
     //createPost
     axios
@@ -46,7 +49,10 @@ export class CreatePost extends React.Component {
 
     this.setState({
       title: "",
+      description: "",
     });
+
+    window.location.reload();
   }
 
   getPost(event) {

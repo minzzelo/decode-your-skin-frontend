@@ -5,9 +5,11 @@ $primary: #f47b8f;
 $background: #ffffff;
 $secondary: #f72e9c;
 $font-size: 14pt;
-$form-shadow: #ffa580;
-$form-primary-highlight: #95a4ff;
+$form-primary-highlight: #bac1f3;
 $form-secondary-highlight: #ffc8ff;
+
+//FEED VARIABLES
+$feed-bg: #fae8e0;
 
 .create-post {
   font-family: "Prompt", sans-serif;
@@ -88,6 +90,68 @@ $form-secondary-highlight: #ffc8ff;
 
     &:hover {
       cursor: pointer;
+    }
+  }
+}
+
+.feed {
+  margin: auto;
+  padding: 20px;
+  width: 800px;
+
+  background: $feed-bg;
+  border: 3px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    background: white;
+    border: 2px solid black;
+    padding: 0px 10px;
+    font-family: "Prompt", sans-serif;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  p {
+    padding: 0px 10px;
+  }
+
+  .delete {
+    width: auto;
+    align-self: flex-end;
+    background: none;
+    opacity: 0.6;
+
+    &:hover {
+      background: #f8afa6;
+      color: white;
+    }
+  }
+
+  .create-post-btn {
+    padding: 5px 10px;
+
+    background: #f8afa6;
+    font-family: "Prompt", sans-serif;
+    font-size: 20px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+
+    outline: none;
+    border: 1px solid #000;
+    box-shadow: 3px 3px 1px #fff, 3px 3px 1px 1px #000;
+
+    transition: all 100ms ease-out;
+
+    &:hover {
+      cursor: pointer;
+      background: #f79489;
     }
   }
 }

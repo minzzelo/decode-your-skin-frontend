@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap");
 
-$primary: #f47b8f;
-$background: #ffffff;
-$secondary: #f72e9c;
 $font-size: 14pt;
 $form-primary-highlight: #bac1f3;
 $form-secondary-highlight: #ffc8ff;
@@ -89,6 +86,19 @@ $feed-bg: #fae8e0;
       3px 3px 1px 1px rgba(0, 0, 0, 1);
 
     &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .emoji-selector {
+    display: flex;
+    flex-direction: row;
+
+    :not(:last-child) {
+      margin-right: 10px;
+    }
+    .emoji-button {
+      font-size: 30px;
       cursor: pointer;
     }
   }

@@ -18,7 +18,6 @@ export class CreatePost extends React.Component {
     //binding
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getPost = this.getPost.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,20 +54,6 @@ export class CreatePost extends React.Component {
     window.location.reload();
   }
 
-  getPost(event) {
-    event.preventDefault();
-    console.log("Getting posts");
-
-    const user = { user: this.props.user };
-
-    axios
-      .post("http://localhost:5000/post/getPost", user)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err.response.data));
-  }
-
   render() {
     return (
       <>
@@ -82,7 +67,7 @@ export class CreatePost extends React.Component {
                 onChange={this.handleChange}
                 required
               />
-              <label htmlFor="Description">Description</label>
+              <label htmlFor="description">Description</label>
               <textarea
                 rows="4"
                 cols="50"
@@ -90,6 +75,22 @@ export class CreatePost extends React.Component {
                 onChange={this.handleChange}
                 required
               />
+              <label htmlFor="skin-condition">My skin is feeling...</label>
+              <div className="emoji-selector">
+                <span role="img" aria-label="good" className="emoji-button">
+                  😁
+                </span>
+                <span
+                  role="img"
+                  aria-label="satisfied"
+                  className="emoji-button"
+                >
+                  😌
+                </span>
+                <span role="img" aria-label="meh" className="emoji-button">
+                  😕
+                </span>
+              </div>
             </div>
             <button type="submit">Submit</button>
           </form>

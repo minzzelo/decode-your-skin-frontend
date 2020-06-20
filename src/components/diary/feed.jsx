@@ -16,10 +16,10 @@ export function Feed(props) {
     axios
       .post("http://localhost:5000/post/getPost", { user: user })
       .then((res) => {
-        if (res.data.post) {
-          console.log(res.data.post);
+        if (res.data.posts) {
+          console.log(res.data.posts);
           setPosts(
-            res.data.post.map((post) => ({
+            res.data.posts.map((post) => ({
               id: post._id,
               title: post.title,
               description: post.description,

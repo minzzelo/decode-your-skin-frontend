@@ -116,12 +116,11 @@ export class Home extends React.Component {
     return (
       <>
         <div className="container">
-          <h1>Home page</h1>
-          {this.props.loginStatus && <h1>Welcome {this.props.user}</h1>}
+          {this.props.loginStatus && <h1>Welcome {this.props.user}</h1>} 
           {!this.props.loginStatus && <h1>Welcome guest</h1>}
         </div>
 
-        <Search />
+        <Search user={this.props.user}/>
       </>
     );
   }

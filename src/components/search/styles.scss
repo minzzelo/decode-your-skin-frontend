@@ -1,3 +1,4 @@
+
 $primary: #f47b8f;
 $background: #ffffff;
 $secondary: #f72e9c;
@@ -5,6 +6,8 @@ $font-size: 14pt;
 $form-shadow: #ffa580;
 $form-primary-highlight: #95a4ff;
 $form-secondary-highlight: #ffc8ff;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .searchBar {
   margin-top: 2em;
@@ -68,8 +71,39 @@ $form-secondary-highlight: #ffc8ff;
   flex-direction: column;
   justify-content: center;
 
+  button {
+    display: inline-block;
+    margin-left: 20px;
+    line-height: $font-size * 2;
+    padding: 0 10px;
+    height: fit-content;
+
+    background: $primary;
+
+    font-size: $font-size;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+
+    transition: 0.2s all ease-in-out;
+
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 1);
+    box-shadow: 3px 3px 1px $form-primary-highlight,
+      3px 3px 1px 1px rgba(0, 0, 0, 1);
+
+    &:hover {
+      cursor: pointer;
+      background: white;
+      color: $primary;
+      border: 1px solid rgba(0, 0, 0, 1);
+    }
+  }
+
   h1, h2 {
-    text-align: center;  
+    text-align: center; 
+    font-family: 'Roboto', sans-serif; 
   }
 
   .heading {
@@ -108,3 +142,5 @@ $form-secondary-highlight: #ffc8ff;
   }
 
 }
+
+

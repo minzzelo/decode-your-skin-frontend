@@ -5,11 +5,12 @@ import Alert from "@material-ui/lab/Alert";
 
 import { SearchResult } from "./searchResult"
 
+
 export class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      product:  "", 
+      searchValue:  "", 
       ingredients: "", 
       ingredDetails: [], 
       score: "", 
@@ -21,20 +22,24 @@ export class SearchBar extends React.Component {
 
     //binding
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleChange(event) {
-    this.setState({product: event.target.value});
-    console.log(this.state.product);
+    this.setState({searchValue: event.target.value});
   }
 
-  handleSubmit(event) {
+  handleSearch(event) {
     event.preventDefault();
-    
+
+
+    //getting the user who submitted the search - can be "" or username 
+    console.log(this.props.user);
+
     console.log("Search Submitted");
+
     
-    const product = {name: this.state.product};
+    const product = {name: this.state.searchValue};
 
     axios.post("http://localhost:5000/search", product)
          .then((res) => { 
@@ -42,17 +47,11 @@ export class SearchBar extends React.Component {
             this.setState({ingredients: res.data.ingredients});
             this.setState({ingredDetails: res.data.tableData})
             this.setState({found: true});
-            this.setState({score: res.data.score})
-            this.setState({image: res.data.image})
-            console.log(res.data.image)
-
-            console.log(this.state.product);
 
           })
          .catch((err) => this.setState({ error: err.response.data }))
 
       this.setState({
-      productName: "",
       ingredients: "",
       ingredDetails: [], 
       found: false, 
@@ -65,33 +64,37 @@ export class SearchBar extends React.Component {
   
   render() {
     const { error } = this.state;
+  
 
     return (
       <div>
-        {!this.state.found ?
-          <form className="searchBar" onSubmit={this.handleSubmit}>
+
+        {!this.state.found &&
+          <form className="searchBar" onSubmit={this.handleSearch}>
             <input type="text"  
-                    placeholder="Search for a product" 
-                    value={this.state.product} 
+                    placeholder="Search for a brand + product E.g. Tatcha The Essence" 
+                    value={this.state.searchValue} 
                     onChange={this.handleChange}
                     required/>
             <button type="submit">Search</button>
           </form>     
-        :
-          <SearchResult 
-            ingredients={this.state.ingredients} 
-            productName={this.state.product}
-            ingredDetails={this.state.ingredDetails}
-            image={this.state.image}
-            score={this.state.score}
-          />
         }
 
+        {this.state.found && 
+        
+        <SearchResult ingredients={this.state.ingredients}
+                      ingredDetails={this.state.ingredDetails}
+                      productName={this.state.searchValue}
+                      user={this.props.user} />
+
+        }
+
+
         {error && (
-          <Alert className="error" variant="outlined" severity="error">
-            {error}
-          </Alert>
-        )}
+            <Alert className="error" variant="outlined" severity="error">
+              {error}
+            </Alert>
+          )}
       </div>
 
 

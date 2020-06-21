@@ -3,6 +3,8 @@ import "./styles.scss";
 
 import { SearchBar } from "./searchBar"
 
+import { Route } from "react-router-dom";
+
 
 export class Search extends React.Component {
   constructor(props) {
@@ -12,7 +14,11 @@ export class Search extends React.Component {
   render() {
     return (
       <>
-        <SearchBar />
+        <Route
+          path="/"
+          exact
+          render={(props) => <SearchBar {...props} user={this.props.user} />}
+        />
       </>
     )
   }

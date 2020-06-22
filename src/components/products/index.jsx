@@ -42,6 +42,7 @@ export class Products extends React.Component {
           <div className="header">
             <h1>Products</h1>
           </div>
+          {this.props.user ? "" : <h1>PLEASE LOG IN</h1>}
           <div className="row">
     
               {this.state.products.length !== 0 ? (
@@ -51,7 +52,8 @@ export class Products extends React.Component {
                 )
               
               ) : (
-                <CircularProgress />
+                
+                <CircularProgress /> 
               )}
         </div>
       

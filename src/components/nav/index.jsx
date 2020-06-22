@@ -39,7 +39,7 @@ export class Nav extends React.Component {
           />
           <StyledBreadcrumb
             component="a"
-            href="/products"
+            href={`/products/${this.props.user}`}
             label="Products"
             icon={<FavoriteRoundedIcon fontSize="small" />}
           />

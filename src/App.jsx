@@ -69,6 +69,7 @@ class App extends React.Component {
           <Nav
             loginStatus={this.state.loginStatus}
             handleLogout={this.handleLogout}
+            user={this.state.user}
           />
           <Switch>
             {/* Directs you to the different pages */}
@@ -95,7 +96,8 @@ class App extends React.Component {
             />
             <Route
               path="/products"
-              render={(props) => <Products {...props} />}
+        
+              render={(props) => <Products user={this.state.user} {...props} />}
             />
             <Route
               path="/diary"

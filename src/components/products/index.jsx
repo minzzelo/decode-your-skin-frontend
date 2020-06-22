@@ -4,54 +4,60 @@ import axios from "axios";
 import "./styles.scss";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+import { ProductItem } from "./productItem";
+
 export class Products extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      name: "",
-      url: "",
+      products: []
     };
+
     this.getProducts = this.getProducts.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.getProducts();
   }
 
-  async getProducts() {
-    const url = {
-      url:
-        "https://www.ewg.org/skindeep/products/879905-Maybelline_Lash_Sensational_Mascara_254_Very_Black/",
-    };
 
-    await axios
-      .post("http://localhost:5000/products/products", url)
-      .then((res) => {
-        this.setState({ name: res.data.name, url: res.data.src});
-      })
-      .catch((err) => console.log(err.response.data));
+   getProducts() {
+
+      
+      const url = "http://localhost:5000" + `${this.props.location.pathname}`;
+
+      axios.get(url)
+           .then((res) => this.setState({products: res.data}))
+           .catch((err) => console.log(err));
   }
   
   render() {
+
+    const { products } = this.state;
+
     return (
       <>
         <div className="products">
           <div className="header">
             <h1>Products</h1>
           </div>
-
-          {this.state.url ? (
-            <div className="product">
-              <div className="image">
-                <img src={this.state.url} />
-              </div>
-              <div className="name">{this.state.name}</div>
-            </div>
-          ) : (
-            <CircularProgress />
-          )}
+          <div className="row">
+    
+              {this.state.products.length !== 0 ? (
+        
+                products.map((product, index) => 
+                  <ProductItem product={product} key={index}/>
+                )
+              
+              ) : (
+                <CircularProgress />
+              )}
+        </div>
+      
         </div>
       </>
     );
   }
 }
+

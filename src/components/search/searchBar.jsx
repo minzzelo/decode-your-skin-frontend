@@ -13,7 +13,6 @@ export class SearchBar extends React.Component {
       searchValue:  "", 
       ingredients: "", 
       ingredDetails: [], 
-      score: "", 
       image: "", 
       found: false, 
       error: "",
@@ -44,8 +43,10 @@ export class SearchBar extends React.Component {
     axios.post("http://localhost:5000/search", product)
          .then((res) => { 
             
-            this.setState({ingredients: res.data.ingredients});
-            this.setState({ingredDetails: res.data.tableData})
+            this.setState({ingredients: res.data.information.ingredList});
+            this.setState({ingredDetails: res.data.table})
+            this.setState({image: res.data.information.imageURL})
+
             this.setState({found: true});
 
           })
@@ -55,8 +56,6 @@ export class SearchBar extends React.Component {
       ingredients: "",
       ingredDetails: [], 
       found: false, 
-      error: "", 
-      score: "", 
       image: "", 
     });
   }
@@ -70,14 +69,21 @@ export class SearchBar extends React.Component {
       <div>
 
         {!this.state.found &&
-          <form className="searchBar" onSubmit={this.handleSearch}>
-            <input type="text"  
-                    placeholder="Search for a brand + product E.g. Tatcha The Essence" 
-                    value={this.state.searchValue} 
-                    onChange={this.handleChange}
-                    required/>
-            <button type="submit">Search</button>
-          </form>     
+          <div>
+            <form className="searchBar" onSubmit={this.handleSearch}>
+              <input type="text"  
+                      placeholder="Search for a brand + product E.g. Tatcha The Essence" 
+                      value={this.state.searchValue} 
+                      onChange={this.handleChange}
+                      required/>
+              <button type="submit">Search</button>
+            </form>  
+            {error && (
+              <Alert className="error" variant="outlined" severity="error">
+                {error}
+              </Alert>
+            )}  
+          </div> 
         }
 
         {this.state.found && 
@@ -85,16 +91,10 @@ export class SearchBar extends React.Component {
         <SearchResult ingredients={this.state.ingredients}
                       ingredDetails={this.state.ingredDetails}
                       productName={this.state.searchValue}
+                      imageURL={this.state.image}
                       user={this.props.user} />
 
         }
-
-
-        {error && (
-            <Alert className="error" variant="outlined" severity="error">
-              {error}
-            </Alert>
-          )}
       </div>
 
 

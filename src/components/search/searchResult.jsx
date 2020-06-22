@@ -18,13 +18,15 @@ export class SearchResult extends React.Component {
     console.log(this.props);
     console.log(this.props.user);
     const data = { 
-      user: this.props.user, 
       productName: this.props.productName, 
       ingredients: this.props.ingredients, 
       ingredDetails: this.props.ingredDetails,
+      imageURL: this.props.imageURL, 
     }
 
-    axios.post("http://localhost:5000/saveProduct", data)
+    const url = "http://localhost:5000/products/saveProduct/" + this.props.user;
+   
+    axios.post(url, data)
          .then((result) => console.log(result))
          .catch(err => console.log(err));
   }
@@ -33,14 +35,16 @@ export class SearchResult extends React.Component {
     return (
       <div>
         <div className="searchResult">
-            <div>
-              <button onClick={this.redirect}>Back</button>
-              <button onClick={this.handleFavourite}>Favourite</button>
+            <div className="navButtons">
+              <button onClick={this.redirect}>Back To Search</button>
+              <button onClick={this.handleFavourite}>Add to {this.props.user}'s Products</button>
             </div>
-    
-            <h1>{this.props.productName}</h1>
-          
-          
+
+           
+            <h2>{this.props.productName}</h2>
+            <img src={this.props.imageURL} alt={this.props.productName}/> 
+           
+
             <div className="ingredients">
               <h3 className="heading">ingredients list</h3>
               <div id="ingredientsList">{this.props.ingredients}</div>

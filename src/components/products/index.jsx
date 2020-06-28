@@ -3,8 +3,10 @@ import axios from "axios";
 
 import "./styles.scss";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import {Grid} from "@material-ui/core";
 
-import { ProductItem } from "./productItem";
+import { ProductCard } from "./productCard";
+import { ProductList } from "./productList";
 
 export class Products extends React.Component {
   constructor(props) {
@@ -38,26 +40,26 @@ export class Products extends React.Component {
 
     return (
       <>
-        <div className="products">
-          <div className="header">
-            <h1>Products</h1>
+        <Grid container direction="column">
+          <div className="products">
+            <div className="header">
+              <h1>My Products</h1>
+            </div>
           </div>
-          {this.props.user ? "" : <h1>PLEASE LOG IN</h1>}
-          <div className="row">
-    
-              {this.state.products.length !== 0 ? (
-        
-                products.map((product, index) => 
-                  <ProductItem product={product} key={index}/>
-                )
+        <Grid item container>
+          <Grid item xs={false} sm={2} />
+          <Grid item xs={12} sm={8}>
+            {this.state.products.length !== 0 ? 
+              <ProductList products={products}/>
               
-              ) : (
-                
-                <CircularProgress /> 
-              )}
-        </div>
-      
-        </div>
+              : (
+              
+              <CircularProgress /> 
+            )}
+          </Grid>
+          <Grid item xs={false} sm={2} />
+        </Grid>
+      </Grid>
       </>
     );
   }

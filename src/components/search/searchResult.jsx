@@ -19,6 +19,7 @@ export class SearchResult extends React.Component {
     console.log(this.props.user);
     const data = { 
       productName: this.props.productName, 
+      description: this.props.description, 
       ingredients: this.props.ingredients, 
       ingredDetails: this.props.ingredDetails,
       imageURL: this.props.imageURL, 
@@ -27,7 +28,7 @@ export class SearchResult extends React.Component {
     const url = "http://localhost:5000/products/saveProduct/" + this.props.user;
    
     axios.post(url, data)
-         .then((result) => console.log(result))
+         .then((result) => alert("Item has been added"))
          .catch(err => console.log(err));
   }
 
@@ -40,7 +41,6 @@ export class SearchResult extends React.Component {
               <button onClick={this.handleFavourite}>Add to {this.props.user}'s Products</button>
             </div>
 
-           
             <h2>{this.props.productName}</h2>
             <img src={this.props.imageURL} alt={this.props.productName}/> 
            

@@ -33,8 +33,6 @@ $form-secondary-highlight: #ffc8ff;
     border-bottom: 5px solid $primary;
   }
 
-
-
   button {
     display: inline-block;
     margin-left: 20px;
@@ -63,6 +61,11 @@ $form-secondary-highlight: #ffc8ff;
       color: $primary;
       border: 1px solid rgba(0, 0, 0, 1);
     }
+  }
+
+  Alert {
+    width: 100px;
+    justify-content: center;
   }
 
 }

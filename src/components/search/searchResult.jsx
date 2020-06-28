@@ -3,7 +3,7 @@ import "./styles.scss";
 import axios from "axios";
 
 import {Grid, Paper} from "@material-ui/core";
-import FavoriteIcon from '@material-ui/icons/Favorite';
+
 
 
 export class SearchResult extends React.Component {
@@ -30,6 +30,7 @@ export class SearchResult extends React.Component {
       ingredients: this.props.ingredients, 
       ingredDetails: this.props.ingredDetails,
       imageURL: this.props.imageURL, 
+      score: this.props.score
     }
 
     const url = "http://localhost:5000/products/saveProduct/" + this.props.user;
@@ -40,7 +41,13 @@ export class SearchResult extends React.Component {
   }
 
   render() {
-    const {productName, imageURL, description, ingredients, ingredDetails} = this.props;
+    const {productName, imageURL, description, ingredients, ingredDetails, score} = this.props;
+    let ewgscore; 
+    if (score === "") {
+      ewgscore = <p>EWG score is not available</p>
+    } else {
+      ewgscore = <img src={score} alt="ewg score" /> 
+    }
 
     return (
       <div className="searchResult">
@@ -50,14 +57,15 @@ export class SearchResult extends React.Component {
         <Grid container spacing={3}>
           <Grid item xs={4}>
             <Paper>
-              <img style={{maxheight: 300, maxWidth:300, minHeight: 250, minWidth: 250}}src={imageURL} alt={productName}/> 
+              <img style={{maxheight: 300, maxWidth:300, minHeight: 250, minWidth: 250}} src={imageURL} alt={productName}/> 
             </Paper>
           </Grid>
           <Grid item xs={6}>    
             <h2 style={{display:'inline-block'}}>{productName.toUpperCase()}</h2> 
             <button style={{float:"right"}}onClick={this.handleFavourite}>🤍</button>
             <p>{description}</p>
-            <div style={{border: '2px solid lightpink', padding: '20px 20px 20px 20px'}} id="ingredientsList">{ingredients}</div>
+            <div style={{border: '2px solid lightpink', padding: '20px 20px 20px 20px', display:'inline-block'}} id="ingredientsList">{ingredients}</div>
+            {ewgscore}
           </Grid>
         </Grid>
         <div className="ingredients">

@@ -42,7 +42,7 @@ export class Products extends React.Component {
         <Grid container direction="column">
           <div className="products">
             <div className="header">
-              <h1>My Products</h1>
+              <h1>My Products💖</h1>
             </div>
           </div>
         <Grid item container>

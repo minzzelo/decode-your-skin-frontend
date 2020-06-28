@@ -76,6 +76,10 @@ export class SearchBar extends React.Component {
 
         {!this.state.found &&
           <div>
+            <div className="container">
+              {this.props.loginStatus && <h1>hello {this.props.user}!👋🏻</h1>} 
+              {!this.props.loginStatus && <h1>hello!👋🏻</h1>}
+            </div>
             <form className="searchBar" onSubmit={this.handleSearch}>
               <input type="text"  
                       placeholder="Search for a brand + product E.g. Tatcha The Essence" 
@@ -105,9 +109,8 @@ export class SearchBar extends React.Component {
               ingredDetails={this.state.ingredDetails}
               productName={this.state.searchValue}
               imageURL={this.state.image}
-              user={this.props.user} />
-
-        }
+              user={this.props.user} />}
+        
       </div>
 
 

@@ -10,6 +10,10 @@ export class SearchResult extends React.Component {
     this.handleFavourite = this.handleFavourite.bind(this);
   }
 
+  componentDidMount() {
+    console.log(this.props.user);
+  }
+
   redirect() {
     window.location.reload();
   }

@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 
     '&:hover' : {
       cursor: 'pointer', 
-      border: '3px solid #f3aabb', 
+      border: '4px solid #f3aabb', 
       boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)', 
       transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
     }, 
@@ -47,8 +47,13 @@ const useStyles = makeStyles({
     
         <Card className={(classes.root)} variant="outlined">
           <CardHeader
-            title={product.productName.toUpperCase()}
-          />
+           title={
+            <Typography gutterBottom variant="h6" component="h6">
+               {product.productName.toUpperCase()}
+            </Typography>
+         } />
+            
+        
           <CardMedia className={classes.media} image={product.imageURL}/>
           <CardContent>
             <Typography variant="body2" component="p">

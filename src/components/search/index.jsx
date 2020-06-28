@@ -11,21 +11,12 @@ export class Search extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
+
   render() {
     return (
       <>
-        <Route
-          path="/"
-          exact
-          render={(props) => <SearchBar {...props} user={this.props.user} />}
-        />
-        <Route
-          path="/results"
-          exact
-          render={(props) => <SearchResult {...props} user={this.props.user} />}
-        />
-      
+        <SearchBar user={this.props.user} loginStatus={this.props.loginStatus} />    
       </>
     )
   }

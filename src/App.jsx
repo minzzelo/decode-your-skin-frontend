@@ -96,7 +96,6 @@ class App extends React.Component {
             />
             <Route
               path="/products"
-        
               render={(props) => <Products user={this.state.user} {...props} />}
             />
             <Route
@@ -117,12 +116,7 @@ export class Home extends React.Component {
   render() {
     return (
       <>
-        <div className="container">
-          {this.props.loginStatus && <h1>Welcome {this.props.user}</h1>} 
-          {!this.props.loginStatus && <h1>Welcome guest</h1>}
-        </div>
-
-        <Search user={this.props.user}/>
+        <Search user={this.props.user} loginStatus={this.props.loginStatus}/>
       </>
     );
   }

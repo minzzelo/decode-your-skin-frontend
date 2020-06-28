@@ -7,10 +7,10 @@ export class CreatePost extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.user,
-      date: "",
+      user: props.user,
       title: "",
       description: "",
+      products: "",
       skin_condition: "",
       error: "",
     };
@@ -33,9 +33,10 @@ export class CreatePost extends React.Component {
 
     const newPost = {
       user: this.state.user,
-      date: new Date(),
       title: this.state.title,
       description: this.state.description,
+      products: this.state.products,
+      skin_condition: this.state.skin_condition,
     };
 
     //createPost
@@ -75,22 +76,20 @@ export class CreatePost extends React.Component {
                 onChange={this.handleChange}
                 required
               />
-              <label htmlFor="skin-condition">My skin is feeling...</label>
-              <div className="emoji-selector">
-                <span role="img" aria-label="good" className="emoji-button">
-                  😁
-                </span>
-                <span
-                  role="img"
-                  aria-label="satisfied"
-                  className="emoji-button"
-                >
-                  😌
-                </span>
-                <span role="img" aria-label="meh" className="emoji-button">
-                  😕
-                </span>
-              </div>
+              <label htmlFor="products">Products used</label>
+              <input
+                type="text"
+                name="products"
+                onChange={this.handleChange}
+                required
+              />
+              <label htmlFor="skin_condition">My skin is feeling...</label>
+              <input
+                type="text"
+                name="skin_condition"
+                onChange={this.handleChange}
+                required
+              />
             </div>
             <button type="submit">Submit</button>
           </form>

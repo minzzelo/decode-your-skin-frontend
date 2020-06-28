@@ -35,7 +35,7 @@ export class SearchResult extends React.Component {
     const url = "http://localhost:5000/products/saveProduct/" + this.props.user;
    
     axios.post(url, data)
-         .then((result) => alert("Item has been added"))
+         .then((result) => alert("Item has been added into your products"))
          .catch(err => console.log(err));
   }
 
@@ -50,7 +50,7 @@ export class SearchResult extends React.Component {
         <Grid container spacing={3}>
           <Grid item xs={4}>
             <Paper>
-              <img style={{height: 300, width:300 }}src={imageURL} alt={productName}/> 
+              <img style={{maxheight: 300, maxWidth:300, minHeight: 250, minWidth: 250}}src={imageURL} alt={productName}/> 
             </Paper>
           </Grid>
           <Grid item xs={6}>    

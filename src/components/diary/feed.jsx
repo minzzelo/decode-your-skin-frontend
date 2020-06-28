@@ -65,8 +65,9 @@ export function Feed(props) {
                 <>
                   <h2>{post.title}</h2>
                   <p>{post.description}</p>
+                  <h3>Products used :</h3>
                   <p>{post.products}</p>
-                  <p>{post.skin_condition}</p>
+                  <h3>My skin condition : {post.skin_condition}</h3>
                   <IconButton
                     aria-label="delete"
                     onClick={() => deletePost(post.id)}

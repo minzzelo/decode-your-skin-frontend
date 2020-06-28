@@ -89,19 +89,6 @@ $feed-bg: #fae8e0;
       cursor: pointer;
     }
   }
-
-  .emoji-selector {
-    display: flex;
-    flex-direction: row;
-
-    :not(:last-child) {
-      margin-right: 10px;
-    }
-    .emoji-button {
-      font-size: 30px;
-      cursor: pointer;
-    }
-  }
 }
 
 .feed {
@@ -123,6 +110,16 @@ $feed-bg: #fae8e0;
     font-family: "Prompt", sans-serif;
     font-size: 24px;
     text-transform: uppercase;
+  }
+
+  h3 {
+    background: white;
+    border: 2px solid black;
+    padding: 0px 10px;
+    font-family: "Prompt", sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    width: fit-content;
   }
 
   p {

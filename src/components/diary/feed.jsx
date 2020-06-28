@@ -13,6 +13,7 @@ export function Feed(props) {
   const [posts, setPosts] = useState(null);
 
   function getPosts() {
+    console.log(user);
     axios
       .post("http://localhost:5000/post/getPost", { user: user })
       .then((res) => {
@@ -23,6 +24,8 @@ export function Feed(props) {
               id: post._id,
               title: post.title,
               description: post.description,
+              products: post.products,
+              skin_condition: post.skin_condition,
             }))
           );
         }
@@ -62,6 +65,9 @@ export function Feed(props) {
                 <>
                   <h2>{post.title}</h2>
                   <p>{post.description}</p>
+                  <h3>Products used :</h3>
+                  <p>{post.products}</p>
+                  <h3>My skin condition : {post.skin_condition}</h3>
                   <IconButton
                     aria-label="delete"
                     onClick={() => deletePost(post.id)}
@@ -75,12 +81,26 @@ export function Feed(props) {
           </div>
         );
       } else {
-        return <div className="feed">You have yet to create any post!</div>;
+        return (
+          <div className="feed">
+            You have yet to create any post!
+            <Link
+              to={props.location.pathname + "/createPost"}
+              style={{ width: "fit-content", alignSelf: "flex-end" }}
+            >
+              <button className="create-post-btn">create post</button>
+            </Link>
+          </div>
+        );
       }
     } else {
       return null;
     }
   };
 
-  return <PostLog />;
+  if (user) {
+    return <PostLog />;
+  } else {
+    return <h1>Please log in</h1>;
+  }
 }

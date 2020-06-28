@@ -11,10 +11,10 @@ export class ProductList extends React.Component {
       this.getProductCard = this.getProductCard.bind(this);
     }
 
-    getProductCard(product) {
+    getProductCard(product, index) {
       return (
-        <Grid item xs={12} sm={4}>
-          <ProductCard product={product} />
+        <Grid item xs={12} sm={4} key={index}>
+          <ProductCard product={product} user={this.props.user} />
         </Grid>
       );
     }
@@ -23,7 +23,7 @@ export class ProductList extends React.Component {
   
         return (
             <Grid container spacing={4}>
-              {this.props.products.map(product => this.getProductCard(product))}
+              {this.props.products.map((product, index) => this.getProductCard(product, index))}
             </Grid>
           
         )

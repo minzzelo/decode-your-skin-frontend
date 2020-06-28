@@ -3,6 +3,9 @@ import {Card, CardHeader, CardActions, CardContent, CardMedia, Typography, Butto
 
 import { makeStyles } from '@material-ui/core/styles';
 
+import axios from "axios";
+
+
 const useStyles = makeStyles({
   root: {
     border: '1px solid #f47b8f', 
@@ -26,10 +29,18 @@ const useStyles = makeStyles({
 
  export function ProductCard(props) {
   const classes = useStyles();
-  const { product } = props;
+  const { product, user } = props;
 
-  function remove() {
+  function remove(event) {
     console.log("remove button clicked");
+    console.log(product.productName);
+
+    const url = "http://localhost:5000/products/delete/" + user + "/" + `${product._id}`
+  
+    axios.post(url)
+         .then((res) => window.location.reload())
+         .catch((err) => console.log(err));
+     
   }
 
     return (
@@ -45,7 +56,7 @@ const useStyles = makeStyles({
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary" onClick={remove}>
+            <Button size="small" color="primary" onClick={remove} value={product.productName}>
               Remove
             </Button>
           </CardActions>

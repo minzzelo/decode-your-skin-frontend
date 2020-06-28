@@ -5,7 +5,6 @@ import "./styles.scss";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import {Grid} from "@material-ui/core";
 
-import { ProductCard } from "./productCard";
 import { ProductList } from "./productList";
 
 export class Products extends React.Component {
@@ -26,8 +25,8 @@ export class Products extends React.Component {
 
    getProducts() {
 
-      
       const url = "http://localhost:5000" + `${this.props.location.pathname}`;
+      console.log(url)
 
       axios.get(url)
            .then((res) => this.setState({products: res.data}))
@@ -50,7 +49,7 @@ export class Products extends React.Component {
           <Grid item xs={false} sm={2} />
           <Grid item xs={12} sm={8}>
             {this.state.products.length !== 0 ? 
-              <ProductList products={products}/>
+              <ProductList products={products} user={this.props.user}/>
               
               : (
               

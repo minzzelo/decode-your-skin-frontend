@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap");
+
+//FEED VARIABLES
+$feed-bg: #eee3f3;
+
+.forum-feed {
+  margin: auto;
+  padding: 20px;
+  width: 800px;
+
+  background: $feed-bg;
+  border: 3px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h1 {
+    background: #a99fc1;
+    border: 2px solid #a99fc1;
+    padding: 0px 10px;
+    font-family: "Prompt", sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    width: fit-content;
+    color: white;
+    letter-spacing: 2px;
+    box-shadow: 3px 3px 1px #fff;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .forum-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .create-thread-btn {
+    padding: 5px;
+
+    width: fit-content;
+
+    background: #d0b7da;
+    font-family: "Prompt", sans-serif;
+    font-size: 15px;
+
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: white;
+
+    outline: none;
+    border: 1px solid #000;
+
+    transition: all 100ms ease-out;
+
+    &:hover {
+      cursor: pointer;
+      background: #a68bb1;
+    }
+  }
+}

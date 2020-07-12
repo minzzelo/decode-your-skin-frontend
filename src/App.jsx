@@ -8,6 +8,7 @@ import { Nav } from "./components/nav";
 import { Products } from "./components/products";
 import { Search } from "./components/search";
 import { Diary } from "./components/diary";
+import { Forum } from "./components/forum";
 
 class App extends React.Component {
   constructor(props) {
@@ -102,6 +103,10 @@ class App extends React.Component {
               path="/diary"
               render={(props) => <Diary {...props} user={this.state.user} />}
             />
+            <Route
+              path="/forum"
+              render={(props) => <Forum {...props} user={this.state.user} />}
+            />
           </Switch>
         </Router>
       </>
@@ -116,7 +121,7 @@ export class Home extends React.Component {
   render() {
     return (
       <>
-        <Search user={this.props.user} loginStatus={this.props.loginStatus}/>
+        <Search user={this.props.user} loginStatus={this.props.loginStatus} />
       </>
     );
   }

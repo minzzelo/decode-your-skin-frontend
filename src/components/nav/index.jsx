@@ -9,6 +9,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import PersonRoundedIcon from "@material-ui/icons/PersonRounded";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 import BookIcon from "@material-ui/icons/Book";
+import RateReviewRoundedIcon from "@material-ui/icons/RateReviewRounded";
 
 const StyledBreadcrumb = withStyles((theme) => ({
   root: {
@@ -42,6 +43,12 @@ export class Nav extends React.Component {
             href={`/products/${this.props.user}`}
             label="Products"
             icon={<FavoriteRoundedIcon fontSize="small" />}
+          />
+          <StyledBreadcrumb
+            component="a"
+            href="/forum"
+            label="Forum"
+            icon={<RateReviewRoundedIcon fontSize="small" />}
           />
           <StyledBreadcrumb
             component="a"

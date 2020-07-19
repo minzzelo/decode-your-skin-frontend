@@ -1,65 +1,178 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+
 
 //FEED VARIABLES
 $feed-bg: #eee3f3;
 
 .forum-feed {
-  margin: auto;
-  padding: 20px;
-  width: 800px;
-
-  background: $feed-bg;
-  border: 3px solid black;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  
 
-  h1 {
-    background: #a99fc1;
-    border: 2px solid #a99fc1;
-    padding: 0px 10px;
-    font-family: "Prompt", sans-serif;
-    font-size: 28px;
-    text-transform: uppercase;
-    width: fit-content;
-    color: white;
-    letter-spacing: 2px;
-    box-shadow: 3px 3px 1px #fff;
-    margin-top: 0px;
-    margin-bottom: 0px;
+  .list{
+   
+    align-self: center;
+
+    .listItem {
+      background-color: $feed-bg;
+      width: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: 'Fira Mono', monospace;
+      margin: 20px;
+  
+
+      .listHeader {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        &:hover {
+          cursor: pointer
+        }
+
+        :link, :visited, :hover {
+          font-size: 38px;
+          text-decoration: none;
+          color: black;
+          cursor: pointer
+        }
+      }
+    }
+  }
+
+ 
+
+  h3 {
+    text-align: center;
   }
 
   .forum-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-align: center;
+    color: var(--primary);
+    
+    display: block;
+    width: 300px;
+    height: 80px;
+    padding: 5px;
+ 
+    margin: auto;
+    margin-bottom: 10px;
+
+    border: 3px solid $feed-bg;
+    box-shadow: 10px -10px 0 -3px var(--background), 10px -10px var(--secondary),
+      20px -20px 0 -3px var(--background), 20px -20px var(--tertiary);
   }
 
-  .create-thread-btn {
-    padding: 5px;
+}
 
-    width: fit-content;
+.create-thread-btn {
+  padding: 5px;
+  margin-right: 100px;
+  width: fit-content;
 
-    background: #d0b7da;
-    font-family: "Prompt", sans-serif;
-    font-size: 15px;
+  background: #d0b7da;
+  font-family: "Prompt", sans-serif;
+  font-size: 15px;
 
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: white;
 
-    outline: none;
-    border: 1px solid #000;
+  outline: none;
+  border: 1px solid #000;
 
-    transition: all 100ms ease-out;
+  transition: all 100ms ease-out;
 
-    &:hover {
-      cursor: pointer;
-      background: #a68bb1;
-    }
+  &:hover {
+    cursor: pointer;
+    background: #a68bb1;
   }
 }
+
+.threadPost {
+
+  display: flex;
+  flex-direction: column;
+
+  form {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    button {
+      align-self: flex-end;
+      margin-right: 20px;
+    }
+  }
+
+  textarea {
+    width: 1000px;
+    padding: 20px;
+    margin: 20px;
+    resize: none;
+  }
+
+  .mainThread{
+    background-color: $feed-bg;
+   
+    width: 1000px;
+    padding:10px;
+    margin: 20px;
+    align-self: center;
+    justify-content: center;
+   
+    font-family: 'Fira Mono', monospace;
+    color: black;
+
+    .listHeader {
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+   
+  }
+
+  .list{
+   
+    align-self: center;
+
+    .listItem {
+      background-color: white;
+      width: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: 'Fira Mono', monospace;
+      margin: 20px;
+  
+
+      .listHeader {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &:hover {
+          cursor: pointer
+        }
+
+        :link, :visited, :hover {
+          font-size: 38px;
+          text-decoration: none;
+          color: black;
+          cursor: pointer
+        }
+      }
+    }
+  }
+
+
+}
+

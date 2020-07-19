@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 
 import { CreateThread } from "./createThread";
 import { ForumFeed } from "./forumFeed";
+import {Thread} from "./thread";
 import "./styles.scss";
 
 export class Forum extends React.Component {
@@ -23,6 +24,10 @@ export class Forum extends React.Component {
           exact
           path={`${this.props.match.path}/createThread`}
           render={(props) => <CreateThread {...props} user={this.props.user} />}
+        />
+        <Route
+          path={`${this.props.match.path}/:threadId`}
+          render={(props) => <Thread {...props} user={this.props.user} />}
         />
       </>
     );

@@ -48,7 +48,7 @@ export class Login extends React.Component {
       username: "",
       password: "",
     });
-
+    
     //window.location = '/'; //go back to homepage
   }
 

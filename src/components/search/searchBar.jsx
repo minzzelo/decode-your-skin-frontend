@@ -4,8 +4,6 @@ import axios from "axios";
 import Alert from "@material-ui/lab/Alert";
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-import { Route } from "react-router-dom";
-
 import { SearchResult } from "./searchResult"
 
 

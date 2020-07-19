@@ -38,7 +38,9 @@ export function Thread(props) {
       if (thread.threadPosts.length > 0) {
         return (
           <>
+            
             <List className='list'>
+              <h3>Comments:</h3>
               {thread.threadPosts.map((post) => 
                 <ListItem key={post._id} className='listItem'>
                   <div className="listHeader">

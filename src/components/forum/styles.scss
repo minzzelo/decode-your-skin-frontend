@@ -143,6 +143,8 @@ $feed-bg: #eee3f3;
     .list{
     
       align-self: center;
+      margin: 10px;
+      font-family: 'Fira Mono', monospace;
 
       .listItem {
         background-color: white;
@@ -152,6 +154,7 @@ $feed-bg: #eee3f3;
         align-items: flex-start;
         font-family: 'Fira Mono', monospace;
         margin: 20px;
+        border: 3px solid $feed-bg;
     
       }
 

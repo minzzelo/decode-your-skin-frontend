@@ -154,6 +154,12 @@ $feed-bg: #eee3f3;
         margin: 20px;
     
       }
+
+      .listHeader {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
   }
 }
 

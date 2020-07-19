@@ -41,15 +41,18 @@ export function Thread(props) {
             <List className='list'>
               {thread.threadPosts.map((post) => 
                 <ListItem key={post._id} className='listItem'>
-                  <p >Posted by: {post.user}</p>
-                  <div className='listHeader'>
-                    <h4>{post.comment}</h4>
+                  <div className="listHeader">
+                    <p >Posted by: {post.user}</p>
                     {post.user == user &&
-                        <IconButton >
-                          <DeleteIcon onClick={() => deleteComment(post._id)}/>
-                        </IconButton>
-                    } 
+                    <IconButton edge="end"  aria-labelledby="delete">
+                      <DeleteIcon onClick={() => deleteComment(post._id)}/>
+                    </IconButton>
+                  } 
                   </div>
+  
+                  
+                  <h4>{post.comment}</h4>
+              
                   <ListItemText
                     
                     secondary={post.date}

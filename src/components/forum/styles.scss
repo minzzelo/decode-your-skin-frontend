@@ -140,39 +140,20 @@ $feed-bg: #eee3f3;
    
   }
 
-  .list{
-   
-    align-self: center;
+    .list{
+    
+      align-self: center;
 
-    .listItem {
-      background-color: white;
-      width: 1000px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      font-family: 'Fira Mono', monospace;
-      margin: 20px;
-  
-
-      .listHeader {
-        display: inline-flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-        &:hover {
-          cursor: pointer
-        }
-
-        :link, :visited, :hover {
-          font-size: 38px;
-          text-decoration: none;
-          color: black;
-          cursor: pointer
-        }
+      .listItem {
+        background-color: white;
+        width: 1000px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-family: 'Fira Mono', monospace;
+        margin: 20px;
+    
       }
-    }
   }
-
-
 }
 

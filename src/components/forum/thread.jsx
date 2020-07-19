@@ -41,7 +41,7 @@ export function Thread(props) {
             <List className='list'>
               {thread.threadPosts.map((post) => 
                 <ListItem key={post._id} className='listItem'>
-                  <p bold>Posted by: {post.user}</p>
+                  <p >Posted by: {post.user}</p>
                   <div className='listHeader'>
                     <h4>{post.comment}</h4>
                     {post.user == user &&
@@ -51,7 +51,7 @@ export function Thread(props) {
                     } 
                   </div>
                   <ListItemText
-                    primary="Reply to this comment"
+                    
                     secondary={post.date}
                   />
                 </ListItem>

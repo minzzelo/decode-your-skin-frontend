@@ -2,9 +2,7 @@ import React from "react";
 import "./styles.scss";
 import axios from "axios";
 
-import {Grid, Paper} from "@material-ui/core";
-
-
+import { Grid, Paper } from "@material-ui/core";
 
 export class SearchResult extends React.Component {
   constructor(props) {
@@ -24,29 +22,39 @@ export class SearchResult extends React.Component {
   handleFavourite() {
     console.log(this.props);
     console.log(this.props.user);
-    const data = { 
-      productName: this.props.productName, 
-      description: this.props.description, 
-      ingredients: this.props.ingredients, 
+    const data = {
+      productName: this.props.productName,
+      description: this.props.description,
+      ingredients: this.props.ingredients,
       ingredDetails: this.props.ingredDetails,
-      imageURL: this.props.imageURL, 
-      score: this.props.score
-    }
+      imageURL: this.props.imageURL,
+      score: this.props.score,
+    };
 
-    const url = "http://localhost:5000/products/saveProduct/" + this.props.user;
-   
-    axios.post(url, data)
-         .then((result) => alert("Item has been added into your products"))
-         .catch(err => console.log(err));
+    const url =
+      "http://decode-your-skin-backend.herokuapp.com/products/saveProduct/" +
+      this.props.user;
+
+    axios
+      .post(url, data)
+      .then((result) => alert("Item has been added into your products"))
+      .catch((err) => console.log(err));
   }
 
   render() {
-    const {productName, imageURL, description, ingredients, ingredDetails, score} = this.props;
-    let ewgscore; 
+    const {
+      productName,
+      imageURL,
+      description,
+      ingredients,
+      ingredDetails,
+      score,
+    } = this.props;
+    let ewgscore;
     if (score === "") {
-      ewgscore = <p>EWG score is not available</p>
+      ewgscore = <p>EWG score is not available</p>;
     } else {
-      ewgscore = <img src={score} alt="ewg score" /> 
+      ewgscore = <img src={score} alt="ewg score" />;
     }
 
     return (
@@ -57,14 +65,36 @@ export class SearchResult extends React.Component {
         <Grid container spacing={3}>
           <Grid item xs={4}>
             <Paper>
-              <img style={{maxheight: 300, maxWidth:300, minHeight: 250, minWidth: 250}} src={imageURL} alt={productName}/> 
+              <img
+                style={{
+                  maxheight: 300,
+                  maxWidth: 300,
+                  minHeight: 250,
+                  minWidth: 250,
+                }}
+                src={imageURL}
+                alt={productName}
+              />
             </Paper>
           </Grid>
-          <Grid item xs={6}>    
-            <h2 style={{display:'inline-block'}}>{productName.toUpperCase()}</h2> 
-            <button style={{float:"right"}}onClick={this.handleFavourite}>🤍</button>
+          <Grid item xs={6}>
+            <h2 style={{ display: "inline-block" }}>
+              {productName.toUpperCase()}
+            </h2>
+            <button style={{ float: "right" }} onClick={this.handleFavourite}>
+              🤍
+            </button>
             <p>{description}</p>
-            <div style={{border: '2px solid lightpink', padding: '20px 20px 20px 20px', display:'inline-block'}} id="ingredientsList">{ingredients}</div>
+            <div
+              style={{
+                border: "2px solid lightpink",
+                padding: "20px 20px 20px 20px",
+                display: "inline-block",
+              }}
+              id="ingredientsList"
+            >
+              {ingredients}
+            </div>
             {ewgscore}
           </Grid>
         </Grid>
@@ -79,17 +109,17 @@ export class SearchResult extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {ingredDetails.map(row => (
+              {ingredDetails.map((row) => (
                 <tr className="details" key={row}>
                   {row.map((detail, index) => (
                     <td key={index}>{detail}</td>
                   ))}
                 </tr>
-              ))} 
+              ))}
             </tbody>
           </table>
         </div>
       </div>
-    )
+    );
   }
 }

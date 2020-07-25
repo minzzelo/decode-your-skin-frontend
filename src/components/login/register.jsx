@@ -33,12 +33,15 @@ export class Register extends React.Component {
     //console.log(newUser);
 
     axios
-      .post("http://localhost:5000/users/registerUser", newUser)
+      .post(
+        "http://decode-your-skin-backend.herokuapp.com/users/registerUser",
+        newUser
+      )
       .then((res) => {
         console.log(res.data);
         alert(res.data);
       })
-      .catch((err) => this.setState({ error: err.response.data}));
+      .catch((err) => this.setState({ error: err.response.data }));
 
     this.setState({
       username: "",

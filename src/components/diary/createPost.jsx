@@ -41,7 +41,10 @@ export class CreatePost extends React.Component {
 
     //createPost
     axios
-      .post("http://localhost:5000/post/createPost", newPost)
+      .post(
+        "http://decode-your-skin-backend.herokuapp.com/post/createPost",
+        newPost
+      )
       .then((res) => {
         console.log(res);
       })

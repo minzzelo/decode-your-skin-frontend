@@ -34,21 +34,22 @@ export class CreateThread extends React.Component {
 
     //createPost
     axios
-      .post("http://localhost:5000/thread/createThread", newThread)
+      .post(
+        "http://decode-your-skin-backend.herokuapp.com/thread/createThread",
+        newThread
+      )
       .then((res) => {
         console.log(res);
-        
       })
       .catch((err) => this.setState({ error: err.response.data }));
 
-      this.setState({
-        title: "",
-        comment: "",
-      });
+    this.setState({
+      title: "",
+      comment: "",
+    });
 
-      //redirect to forum page after posting a thread
-      window.location.pathname = '/forum';
-    
+    //redirect to forum page after posting a thread
+    window.location.pathname = "/forum";
   }
 
   render() {

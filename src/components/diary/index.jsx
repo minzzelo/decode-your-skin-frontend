@@ -25,7 +25,7 @@ export class Diary extends React.Component {
     const user = { user: this.props.user };
 
     axios
-      .post("http://localhost:5000/post/getPost", user)
+      .post("http://decode-your-skin-backend.herokuapp.com/post/getPost", user)
       .then((res) => {
         console.log(res);
       })

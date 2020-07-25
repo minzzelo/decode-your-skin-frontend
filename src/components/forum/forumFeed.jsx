@@ -4,9 +4,15 @@ import { Link, Redirect } from "react-router-dom";
 
 import { Thread } from "./thread";
 
-import {List, ListItem, ListItemText, ListItemSecondaryAction, IconButton} from '@material-ui/core';
+import {
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+} from "@material-ui/core";
 
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from "@material-ui/icons/Delete";
 
 export function ForumFeed(props) {
   const user = props.user;
@@ -15,16 +21,19 @@ export function ForumFeed(props) {
 
   function getAllThreads() {
     axios
-      .post("http://localhost:5000/thread/getAllThreads", {})
+      .post(
+        "http://decode-your-skin-backend.herokuapp.com/thread/getAllThreads",
+        {}
+      )
       .then((res) => {
         if (res.data.threads) {
           setThreads(
             res.data.threads.map((thread) => ({
               id: thread._id,
-              user: thread.user, 
+              user: thread.user,
               title: thread.title,
-              comment: thread.comment, 
-              date: thread.date
+              comment: thread.comment,
+              date: thread.date,
             }))
           );
         }
@@ -34,7 +43,10 @@ export function ForumFeed(props) {
 
   function deletePost(id) {
     axios
-      .post("http://localhost:5000/thread/deleteThread", { id })
+      .post(
+        "http://decode-your-skin-backend.herokuapp.com/thread/deleteThread",
+        { id }
+      )
       .then((res) => {
         console.log(res);
       })
@@ -45,7 +57,7 @@ export function ForumFeed(props) {
   }
 
   function redirect(id) {
-    window.location.pathname = '/forum/'  + id;
+    window.location.pathname = "/forum/" + id;
   }
 
   useEffect(() => {
@@ -61,34 +73,30 @@ export function ForumFeed(props) {
     if (threads) {
       if (threads.length > 0) {
         return (
-          <>  
-            <List className='list'>
-
+          <>
+            <List className="list">
               {threads.map((thread) => (
-                
-                <ListItem key={thread.id} className='listItem' onClick={() => console.log('clicked')}>
-                  <div className='listHeader'>
-                    <Link 
-                        to={props.location.pathname + "/" + `${thread.id}`} 
-                    >
-                        {thread.title}
+                <ListItem
+                  key={thread.id}
+                  className="listItem"
+                  onClick={() => console.log("clicked")}
+                >
+                  <div className="listHeader">
+                    <Link to={props.location.pathname + "/" + `${thread.id}`}>
+                      {thread.title}
                     </Link>
-                    
-                    {/* delete button only appears if you are the one that created the post*/}
-                    {thread.user == user &&
-                      <IconButton edge="end" aria-label="delete">
-                        <DeleteIcon onClick={() => deletePost(thread.id)}/>
-                      </IconButton>
-                    } 
-                  </div>
-                
-                  <h5>{thread.comment}</h5>
-                  <ListItemText
-                    secondary={thread.date}
-                  />
-                </ListItem>
 
-                  
+                    {/* delete button only appears if you are the one that created the post*/}
+                    {thread.user == user && (
+                      <IconButton edge="end" aria-label="delete">
+                        <DeleteIcon onClick={() => deletePost(thread.id)} />
+                      </IconButton>
+                    )}
+                  </div>
+
+                  <h5>{thread.comment}</h5>
+                  <ListItemText secondary={thread.date} />
+                </ListItem>
               ))}
             </List>
           </>

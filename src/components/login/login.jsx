@@ -33,7 +33,10 @@ export class Login extends React.Component {
 
     console.log(newUser);
     axios
-      .post("http://localhost:5000/users/login", newUser)
+      .post(
+        "http://decode-your-skin-backend.herokuapp.com/users/login",
+        newUser
+      )
       .then((res) => {
         //set local storage
         localStorage.setItem("TOKEN_KEY", res.data.token);
@@ -48,7 +51,7 @@ export class Login extends React.Component {
       username: "",
       password: "",
     });
-    
+
     //window.location = '/'; //go back to homepage
   }
 

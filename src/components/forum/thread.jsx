@@ -22,7 +22,7 @@ export function Thread(props) {
     console.log("GET THREAD", threadId);
 
     axios
-      .post("http://decode-your-skin-backend.herokuapp.com/thread/getThread", {
+      .post("https://decode-your-skin-backend.herokuapp.com/thread/getThread", {
         id: threadId,
       })
       .then((res) => {
@@ -88,7 +88,7 @@ export function Thread(props) {
 
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/threadpost/createThreadPost",
+        "https://decode-your-skin-backend.herokuapp.com/threadpost/createThreadPost",
         { user, comment: addComment, threadId: id }
       )
       .then((res) => {
@@ -102,7 +102,7 @@ export function Thread(props) {
   function deletePost(id) {
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/thread/deleteThread",
+        "https://decode-your-skin-backend.herokuapp.com/thread/deleteThread",
         { id }
       )
       .then((res) => {
@@ -117,7 +117,7 @@ export function Thread(props) {
   function deleteComment(id) {
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/threadpost/deleteThreadPost",
+        "https://decode-your-skin-backend.herokuapp.com/threadpost/deleteThreadPost",
         { id: id }
       )
       .then((res) => {

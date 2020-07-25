@@ -32,7 +32,7 @@ export class SearchResult extends React.Component {
     };
 
     const url =
-      "http://decode-your-skin-backend.herokuapp.com/products/saveProduct/" +
+      "https://decode-your-skin-backend.herokuapp.com/products/saveProduct/" +
       this.props.user;
 
     axios

@@ -41,7 +41,7 @@ export function ProductCard(props) {
     console.log(product.productName);
 
     const url =
-      "http://decode-your-skin-backend.herokuapp.com/products/delete/" +
+      "https://decode-your-skin-backend.herokuapp.com/products/delete/" +
       user +
       "/" +
       `${product._id}`;

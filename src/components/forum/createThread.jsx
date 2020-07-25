@@ -35,7 +35,7 @@ export class CreateThread extends React.Component {
     //createPost
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/thread/createThread",
+        "https://decode-your-skin-backend.herokuapp.com/thread/createThread",
         newThread
       )
       .then((res) => {

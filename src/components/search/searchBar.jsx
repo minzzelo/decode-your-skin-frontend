@@ -42,7 +42,7 @@ export class SearchBar extends React.Component {
     const product = { name: this.state.searchValue };
 
     axios
-      .post("http://decode-your-skin-backend.herokuapp.com/search", product)
+      .post("https://decode-your-skin-backend.herokuapp.com/search", product)
       .then((res) => {
         this.setState({ description: res.data.information.description });
         this.setState({ ingredients: res.data.information.ingredList });

@@ -15,7 +15,7 @@ export function Feed(props) {
   function getPosts() {
     console.log(user);
     axios
-      .post("http://decode-your-skin-backend.herokuapp.com/post/getPost", {
+      .post("https://decode-your-skin-backend.herokuapp.com/post/getPost", {
         user: user,
       })
       .then((res) => {
@@ -37,7 +37,7 @@ export function Feed(props) {
 
   function deletePost(id) {
     axios
-      .post("http://decode-your-skin-backend.herokuapp.com/post/deletePost", {
+      .post("https://decode-your-skin-backend.herokuapp.com/post/deletePost", {
         id,
       })
       .then((res) => {

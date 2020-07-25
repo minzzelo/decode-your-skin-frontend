@@ -24,7 +24,7 @@ export class Products extends React.Component {
 
   getProducts() {
     const url =
-      "http://decode-your-skin-backend.herokuapp.com" +
+      "https://decode-your-skin-backend.herokuapp.com" +
       `${this.props.location.pathname}`;
     console.log(url);
 

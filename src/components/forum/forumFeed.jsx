@@ -22,7 +22,7 @@ export function ForumFeed(props) {
   function getAllThreads() {
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/thread/getAllThreads",
+        "https://decode-your-skin-backend.herokuapp.com/thread/getAllThreads",
         {}
       )
       .then((res) => {
@@ -44,7 +44,7 @@ export function ForumFeed(props) {
   function deletePost(id) {
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/thread/deleteThread",
+        "https://decode-your-skin-backend.herokuapp.com/thread/deleteThread",
         { id }
       )
       .then((res) => {

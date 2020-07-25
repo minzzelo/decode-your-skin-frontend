@@ -34,7 +34,7 @@ export class Register extends React.Component {
 
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/users/registerUser",
+        "https://decode-your-skin-backend.herokuapp.com/users/registerUser",
         newUser
       )
       .then((res) => {

@@ -34,7 +34,7 @@ export class Login extends React.Component {
     console.log(newUser);
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/users/login",
+        "https://decode-your-skin-backend.herokuapp.com/users/login",
         newUser
       )
       .then((res) => {

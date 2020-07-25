@@ -42,7 +42,7 @@ export class CreatePost extends React.Component {
     //createPost
     axios
       .post(
-        "http://decode-your-skin-backend.herokuapp.com/post/createPost",
+        "https://decode-your-skin-backend.herokuapp.com/post/createPost",
         newPost
       )
       .then((res) => {

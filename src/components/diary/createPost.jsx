@@ -55,7 +55,7 @@ export class CreatePost extends React.Component {
       description: "",
     });
 
-    window.location.reload();
+    window.location.pathname = "/diary";
   }
 
   render() {

@@ -82,7 +82,7 @@ export function ForumFeed(props) {
                   onClick={() => console.log("clicked")}
                 >
                   <div className="listHeader">
-                    <Link to={props.location.pathname + "/" + `${thread.id}`}>
+                    <Link to={props.location.pathname + "/getPost/" + `${thread.id}`}>
                       {thread.title}
                     </Link>
 

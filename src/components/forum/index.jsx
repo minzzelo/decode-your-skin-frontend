@@ -26,7 +26,7 @@ export class Forum extends React.Component {
           render={(props) => <CreateThread {...props} user={this.props.user} />}
         />
         <Route
-          path={`${this.props.match.path}/:threadId`}
+          path={`${this.props.match.path}/getPost/:threadId`}
           render={(props) => <Thread {...props} user={this.props.user} />}
         />
       </>
